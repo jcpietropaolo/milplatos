@@ -1668,7 +1668,7 @@ function showDisclaimer(){$('disclaimer').classList.add('show');}
 function hideDisclaimer(){$('disclaimer').classList.remove('show');}
 $('discOk').onclick=()=>{try{localStorage.setItem(DKEY,'1');}catch(e){}hideDisclaimer();};
 $('discLink').onclick=e=>{e.preventDefault();showDisclaimer();};
-const APP_URL='https://milplatos.app';   // ← cambiá esto por la URL donde alojes la app
+const APP_URL='https://github.com/jcpietropaolo/milplatos';   // ← cambiá esto por la URL donde alojes la app
 $('shareBtn').onclick=async()=>{
   const url=(location.protocol.indexOf('http')===0)?location.href.split('#')[0]:APP_URL;
   const data={title:'MilPlatos',text:'MilPlatos — armá menús semanales saludables, gratis y offline. Probala:',url};
