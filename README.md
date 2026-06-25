@@ -1,16 +1,40 @@
 # MilPlatos
 
-App web offline para armar menús semanales saludables. Un solo archivo, sin servidor.
+**Armá menús semanales saludables y variados con lo que tenés a mano.** App web offline, en un solo archivo. Tus datos quedan en tu dispositivo: tu privacidad, siempre.
 
-## Publicar en GitHub Pages
-1. Creá un repositorio nuevo (público), p.ej. `milplatos`.
-2. Subí **todo el contenido de esta carpeta** (no la carpeta, sino los archivos: index.html, manifest.json, service-worker.js, icon.svg, icon-192.png, icon-512.png).
-3. En el repo: **Settings → Pages**.
-4. En **Build and deployment → Source**, elegí **Deploy from a branch**.
-5. Branch: **main** y carpeta **/(root)**. Guardá.
-6. Esperá ~1 minuto. Tu app queda en `https://TU_USUARIO.github.io/milplatos/`.
+### 👉 Usá la app: **[jcpietropaolo.github.io/milplatos](https://jcpietropaolo.github.io/milplatos/)**
 
-## Notas
-- Es una PWA: desde el celular, "Agregar a pantalla de inicio" la instala y funciona offline.
-- Si actualizás `index.html`, subí el cambio y subí el número de versión en `service-worker.js` (CACHE = 'milplatos-v2', etc.) para que se actualice en los dispositivos.
-- Acordate de cambiar `APP_URL` dentro de index.html por la URL real (la del botón Compartir).
+[![Invitame un café en cafecito.app](https://cdn.cafecito.app/imgs/buttons/button_5.svg)](https://cafecito.app/milplatos)
+
+## ✨ Características
+
+- 🥗 **Alimentos precargados** — una amplia variedad lista para usar, que podés activar o desactivar según lo que tengas.
+- ➕ **Tus propios alimentos** — incorporá los que quieras y asignales preferencias de uso.
+- 🎲 **Menús al azar o a mano** — generá combinaciones aleatorias que respetan tus requerimientos diarios, o armá los menús vos mismo.
+- 📊 **Macros y nutrientes** — definí tus macros y conocé calorías y nutrientes esenciales: magnesio, sodio, potasio y omega 3.
+- 🖨️ **Imprimí, exportá y compartí** — llevá tu menú a PDF, imprimilo o compartilo con quien quieras.
+- 🛒 **Lista de compras automática** — generada a partir del menú de la semana.
+- 📴 **100% offline** — funciona sin internet y guarda todo en tu dispositivo.
+- 🆓 **Gratis y sin restricciones** — todo disponible, sin límites ni funciones pagas.
+
+## 📲 Instalación
+
+No requiere instalar nada desde una tienda:
+
+1. Abrí **[jcpietropaolo.github.io/milplatos](https://jcpietropaolo.github.io/milplatos/)** en tu celular.
+2. **Android (Chrome):** menú ⋮ → *Instalar app* / *Agregar a pantalla de inicio*.
+3. **iPhone (Safari):** botón Compartir → *Agregar a inicio*.
+
+Queda con ícono propio, a pantalla completa y funcionando sin internet.
+
+## ☕ Apoyá el proyecto
+
+MilPlatos es **gratuito y sin restricciones**. Si te resulta útil, podés invitarme un cafecito:
+
+👉 **[cafecito.app/milplatos](https://cafecito.app/milplatos)**
+
+## ⚠️ Aviso
+
+Los números (calorías, macros y micronutrientes) son **estimaciones** para orientarte, no una prescripción médica. MilPlatos no reemplaza el consejo de un profesional de la salud. Ante cualquier duda, consultá con un médico o nutricionista.
+
+¡Saludos!
