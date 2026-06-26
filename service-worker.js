@@ -1,6 +1,6 @@
 /* Service worker — cachea la app para que funcione sin conexión. */
-const CACHE = 'milplatos-v1';
-const ASSETS = ['./', './index.html', './manifest.json', './icon.svg', './icon-192.png', './icon-512.png'];
+const CACHE = 'milplatos-v2';
+const ASSETS = ['./', './index.html', './manual.html', './manifest.json', './icon.svg', './icon-192.png', './icon-512.png'];
 
 self.addEventListener('install', (e) => {
   e.waitUntil(caches.open(CACHE).then((c) => c.addAll(ASSETS)).catch(() => {}));

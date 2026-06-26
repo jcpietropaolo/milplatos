@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MilPlatos · Guía de uso</title>
+<meta name="description" content="Qué es MilPlatos y cómo usarlo: armá menús semanales saludables y variados con lo que tenés a mano. Offline, privado y gratis.">
+<meta name="theme-color" content="#3E7C4F">
+<link rel="icon" href="icon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#F4F6F1; --panel:#FFFFFF; --ink:#1C231A; --ink-soft:#4E5749;
+    --line:#E2E6DC; --line-strong:#CDD3C5;
+    --prot:#C0492E; --veg:#3E7C4F; --carbm:#C2891F; --fatm:#6B5B95;
+    --flav:#1F7E8C; --fruit:#B5417E; --base:#B5562A;
+    --radius:16px; --shadow:0 1px 2px rgba(28,35,26,.06), 0 10px 30px rgba(28,35,26,.07);
+    --display:'Bricolage Grotesque',sans-serif;
+    --body:ui-sans-serif,system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);line-height:1.6;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:980px;margin:0 auto;padding:0 22px}
+  a{color:var(--veg)}
+  h1,h2,h3{font-family:var(--display);font-weight:800;line-height:1.08;margin:0}
+  .eyebrow{font-family:var(--display);font-weight:700;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft)}
+
+  /* ---- nav ---- */
+  header.top{position:sticky;top:0;z-index:20;background:rgba(244,246,241,.86);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  .topbar{display:flex;align-items:center;gap:14px;height:60px}
+  .brand{display:flex;align-items:center;gap:9px;font-family:var(--display);font-weight:800;font-size:20px;text-decoration:none;color:var(--ink)}
+  .brand .mp{color:var(--prot)}
+  .brand svg{height:26px;width:26px}
+  .topnav{margin-left:auto;display:flex;gap:20px}
+  .topnav a{color:var(--ink-soft);text-decoration:none;font-size:14px;font-weight:600}
+  .topnav a:hover{color:var(--ink)}
+  .open-app{background:var(--ink);color:#fff;padding:9px 16px;border-radius:999px;text-decoration:none;font-weight:700;font-size:14px;white-space:nowrap}
+  .open-app:hover{background:#2c362a}
+  @media(max-width:760px){.topnav{display:none}}
+
+  /* ---- hero ---- */
+  .hero{padding:64px 0 30px;text-align:center}
+  .hero-mark{height:96px;width:96px;filter:drop-shadow(0 12px 22px rgba(28,35,26,.14))}
+  .hero h1{font-size:clamp(46px,9vw,84px);margin:18px 0 0;letter-spacing:-.02em}
+  .hero h1 .mp{color:var(--prot)}
+  .hero .thesis{font-size:clamp(18px,2.6vw,23px);color:var(--ink-soft);max-width:620px;margin:16px auto 0}
+  .hero-cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:28px}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:13px 24px;border-radius:999px;text-decoration:none;font-weight:700;font-size:15px;border:1px solid transparent}
+  .btn-primary{background:var(--veg);color:#fff}
+  .btn-primary:hover{background:#356b45}
+  .btn-coffee{background:#6F4A2E;color:#FFF3E6}
+  .btn-coffee:hover{background:#5e3e26}
+  .hero-note{margin-top:18px;font-size:13px;color:var(--ink-soft)}
+  .hero-note b{color:var(--ink)}
+
+  /* ---- sections ---- */
+  section{padding:52px 0;border-top:1px solid var(--line)}
+  .sec-head{max-width:680px;margin-bottom:30px}
+  .sec-head h2{font-size:clamp(28px,4.4vw,40px);margin-top:10px;letter-spacing:-.01em}
+  .sec-head p{color:var(--ink-soft);font-size:17px;margin:12px 0 0}
+
+  /* what-is feature grid */
+  .feat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+  @media(max-width:680px){.feat-grid{grid-template-columns:1fr}}
+  .feat{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:20px 20px 18px;box-shadow:var(--shadow)}
+  .feat .ic{font-size:24px;line-height:1}
+  .feat h3{font-size:18px;margin:12px 0 6px}
+  .feat p{margin:0;color:var(--ink-soft);font-size:15px}
+
+  /* steps */
+  .steps{display:grid;gap:14px}
+  .step{display:grid;grid-template-columns:54px 1fr;gap:18px;align-items:start;background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:20px 22px;box-shadow:var(--shadow)}
+  .step .n{font-family:var(--display);font-weight:800;font-size:30px;color:var(--veg);line-height:1}
+  .step h3{font-size:18px;margin:0 0 4px}
+  .step p{margin:0;color:var(--ink-soft);font-size:15px}
+  .step p .k{color:var(--ink);font-weight:600}
+
+  /* tools */
+  .tool{background:var(--panel);border:1px solid var(--line);border-left:5px solid var(--col,var(--veg));border-radius:var(--radius);padding:24px 24px 20px;box-shadow:var(--shadow);margin-bottom:18px}
+  .tool-tag{display:inline-flex;align-items:center;gap:7px;font-family:var(--display);font-weight:700;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--col,var(--veg));background:color-mix(in srgb,var(--col,var(--veg)) 12%,#fff);border:1px solid color-mix(in srgb,var(--col,var(--veg)) 25%,#fff);padding:5px 12px;border-radius:999px}
+  .tool h3{font-size:24px;margin:14px 0 6px}
+  .tool>p{color:var(--ink-soft);margin:0 0 14px;font-size:16px}
+  .tool ul{margin:0;padding-left:0;list-style:none;display:grid;gap:9px}
+  .tool li{position:relative;padding-left:24px;font-size:15px}
+  .tool li::before{content:'';position:absolute;left:4px;top:9px;width:8px;height:8px;border-radius:3px;background:var(--col,var(--veg))}
+  .tool li b{color:var(--ink)}
+
+  /* concepts */
+  .concepts{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+  @media(max-width:680px){.concepts{grid-template-columns:1fr}}
+  .concept{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px 18px 16px}
+  .concept h3{font-size:16px;margin:0 0 6px;display:flex;align-items:center;gap:8px}
+  .dot{width:11px;height:11px;border-radius:4px;flex:0 0 auto}
+  .concept p{margin:0;color:var(--ink-soft);font-size:14.5px}
+  .concept p b{color:var(--ink)}
+  .roles{display:flex;flex-wrap:wrap;gap:7px;margin-top:10px}
+  .role{font-size:12px;font-weight:700;color:#fff;padding:4px 11px;border-radius:999px}
+
+  /* install */
+  .install{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  @media(max-width:680px){.install{grid-template-columns:1fr}}
+  .ibox{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:20px 22px;box-shadow:var(--shadow)}
+  .ibox h3{font-size:17px;margin:0 0 8px}
+  .ibox ol{margin:0;padding-left:18px;color:var(--ink-soft);font-size:15px}
+  .ibox ol li{margin:5px 0}
+
+  /* note / disclaimer */
+  .note{background:#FBF7EE;border:1px solid #EADfc7;border-radius:var(--radius);padding:20px 22px;font-size:14.5px;color:#5b5436}
+  .note b{color:#3f3a22}
+
+  /* footer */
+  footer{border-top:1px solid var(--line);padding:40px 0 56px;text-align:center}
+  .foot-cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:22px}
+  .foot-links{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;font-size:14px}
+  .foot-links a{color:var(--ink-soft);text-decoration:none;font-weight:600}
+  .foot-links a:hover{color:var(--ink)}
+  .foot-fine{color:var(--ink-soft);font-size:13px;margin-top:18px}
+  @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap topbar">
+    <a class="brand" href="#top">
+      <svg viewBox="0 0 240 240" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="d" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#D2552F"/><stop offset="1" stop-color="#B23E22"/></linearGradient></defs><circle cx="120" cy="120" r="104" fill="#fff" stroke="#D9DED1" stroke-width="4"/><circle cx="120" cy="120" r="76" fill="none" stroke="#E4E8DF" stroke-width="5"/><g transform="rotate(-11 120 116)"><rect x="76" y="74" width="88" height="88" rx="20" fill="url(#d)"/><g fill="#fff"><circle cx="99" cy="97" r="9.5"/><circle cx="141" cy="97" r="9.5"/><circle cx="120" cy="118" r="9.5"/><circle cx="99" cy="139" r="9.5"/><circle cx="141" cy="139" r="9.5"/></g></g></svg>
+      Mil<span class="mp">Platos</span>
+    </a>
+    <nav class="topnav">
+      <a href="#que-es">Qué es</a>
+      <a href="#empezar">Cómo empezar</a>
+      <a href="#herramientas">Herramientas</a>
+      <a href="#conceptos">Conceptos</a>
+      <a href="#instalar">Instalar</a>
+    </nav>
+    <a class="open-app" href="https://jcpietropaolo.github.io/milplatos/" target="_blank" rel="noopener">Usar la app →</a>
+  </div>
+</header>
+
+<a id="top"></a>
+<div class="wrap hero">
+  <svg class="hero-mark" viewBox="0 0 240 240" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="dh" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#D2552F"/><stop offset="1" stop-color="#B23E22"/></linearGradient></defs><circle cx="120" cy="120" r="104" fill="#fff" stroke="#D9DED1" stroke-width="4"/><circle cx="120" cy="120" r="76" fill="none" stroke="#E4E8DF" stroke-width="5"/><g transform="rotate(-11 120 116)"><rect x="76" y="74" width="88" height="88" rx="20" fill="url(#dh)"/><g fill="#fff"><circle cx="99" cy="97" r="9.5"/><circle cx="141" cy="97" r="9.5"/><circle cx="120" cy="118" r="9.5"/><circle cx="99" cy="139" r="9.5"/><circle cx="141" cy="139" r="9.5"/></g></g></svg>
+  <h1>Mil<span class="mp">Platos</span></h1>
+  <p class="thesis">Armá menús semanales saludables y variados con lo que tenés a mano. Tirás los dados, ajustás, y listo.</p>
+  <div class="hero-cta">
+    <a class="btn btn-primary" href="https://jcpietropaolo.github.io/milplatos/" target="_blank" rel="noopener">Abrir la app</a>
+    <a class="btn btn-coffee" href="https://cafecito.app/milplatos" target="_blank" rel="noopener">☕ Invitame un cafecito</a>
+  </div>
+  <p class="hero-note"><b>Gratis · Sin cuenta · Offline.</b> Todo se guarda en tu dispositivo: tus datos no salen de ahí.</p>
+</div>
+
+<!-- QUÉ ES -->
+<section id="que-es">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Qué es</div>
+      <h2>Un ayudante para comer rico, variado y equilibrado</h2>
+      <p>MilPlatos es una app web liviana que arma tus menús de la semana respetando tus objetivos de calorías y nutrientes. No es una dieta cerrada: vos elegís qué alimentos entran en juego, y la app combina, calcula y te ahorra el trabajo. Funciona sin internet y no recopila ningún dato.</p>
+    </div>
+    <div class="feat-grid">
+      <div class="feat"><div class="ic">🥗</div><h3>Alimentos a tu medida</h3><p>Trae una base amplia ya cargada. Activás los que tenés, desactivás los que no, y sumás los tuyos propios.</p></div>
+      <div class="feat"><div class="ic">🎲</div><h3>Al azar o a mano</h3><p>Generá menús aleatorios que respetan tus requerimientos, o armalos vos mismo plato por plato.</p></div>
+      <div class="feat"><div class="ic">📊</div><h3>Calorías y nutrientes</h3><p>Definís tus macros y ves calorías, proteínas, carbos, grasas y micros clave: magnesio, sodio, potasio y omega 3.</p></div>
+      <div class="feat"><div class="ic">🛒</div><h3>Lista de compras</h3><p>Se arma sola a partir del menú de la semana y se multiplica por la cantidad de personas.</p></div>
+      <div class="feat"><div class="ic">🖨️</div><h3>Imprimí, exportá, compartí</h3><p>Llevá tu menú a PDF, imprimilo o compartilo con quien quieras desde el botón Compartir.</p></div>
+      <div class="feat"><div class="ic">📴</div><h3>Offline y privado</h3><p>Una sola página, sin servidor. Todo queda en tu dispositivo, incluso sin conexión.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CÓMO EMPEZAR -->
+<section id="empezar">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Cómo empezar</div>
+      <h2>De cero a tu primer menú, en 6 pasos</h2>
+      <p>No hace falta configurar nada complicado. Estos son los pasos en orden; podés saltarte los opcionales.</p>
+    </div>
+    <div class="steps">
+      <div class="step"><div class="n">1</div><div><h3>Ajustá tus parámetros</h3><p>En el panel de arriba ponés tus <span class="k">calorías diarias</span>, <span class="k">proteína</span>, proporción de carbohidratos y cantidad de personas. ¿No sabés tus calorías? Usá la <span class="k">calculadora de metabolismo</span> (sexo, edad, altura, peso y actividad) y te las estima.</p></div></div>
+      <div class="step"><div class="n">2</div><div><h3>Elegí cuántas comidas por día</h3><p>De <span class="k">1 a 4</span>. Con 3 son desayuno, almuerzo y cena; con 4 se suma la merienda. El desayuno y la merienda son <span class="k">livianos</span>; el resto de las calorías se concentra en las comidas principales.</p></div></div>
+      <div class="step"><div class="n">3</div><div><h3>Generá la semana</h3><p>En modo <span class="k">Dados</span>, tocás <span class="k">Generar semana</span> y la app arma 7 días completos. En modo <span class="k">Manual</span>, elegís vos cada alimento y su porción.</p></div></div>
+      <div class="step"><div class="n">4</div><div><h3>Ajustá a tu gusto</h3><p><span class="k">Bloqueá</span> los días que te gustaron, <span class="k">duplicá</span> uno a otro día y volvé a generar el resto. También podés apagar secciones del plato (acompañamiento o el toque de sabor).</p></div></div>
+      <div class="step"><div class="n">5</div><div><h3>Personalizá la base <em style="color:var(--ink-soft);font-style:normal">(opcional)</em></h3><p>En <span class="k">Editar base</span> prendés solo lo que tenés en casa, sumás tus propios alimentos y marcás cómo y cuándo querés que se usen.</p></div></div>
+      <div class="step"><div class="n">6</div><div><h3>Imprimí, exportá y compartí</h3><p>Generá la <span class="k">lista de compras</span>, imprimí el menú o exportalo a <span class="k">PDF</span>, y compartilo. Tu trabajo queda guardado en el dispositivo para la próxima.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- HERRAMIENTAS -->
+<section id="herramientas">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Las herramientas</div>
+      <h2>Tres pestañas, un mismo recetario</h2>
+      <p>Las tres trabajan sobre la misma base de alimentos: lo que cambiás en una, vale para todas.</p>
+    </div>
+
+    <div class="tool" style="--col:var(--veg)">
+      <span class="tool-tag">🗓️ Planificador semanal</span>
+      <h3>Tu semana completa, calculada</h3>
+      <p>El corazón de la app: 7 días con las comidas que elijas, cada una con sus porciones, calorías y nutrientes.</p>
+      <ul>
+        <li><b>Dados o Manual.</b> Que arme todo solo respetando tus objetivos, o elegí vos cada cosa.</li>
+        <li><b>Medidas caseras.</b> Las porciones se muestran en algo entendible —«2½ huevos», «1 taza», «1 cucharada de aceite»— además de los gramos.</li>
+        <li><b>Promedio semanal.</b> Un resumen de cómo te dio la semana en calorías y macros.</li>
+        <li><b>Bloquear y duplicar.</b> Fijás los días que te gustan y regenerás el resto; copiás un día a otro.</li>
+        <li><b>Exportar / Importar menú.</b> Guardás el menú en un archivo para recuperarlo cuando quieras.</li>
+      </ul>
+    </div>
+
+    <div class="tool" style="--col:var(--carbm)">
+      <span class="tool-tag">🎲 Matriz diaria</span>
+      <h3>Probá combinaciones tirando los dados</h3>
+      <p>Una grilla para experimentar rápido: tirás el dado de un alimento puntual o de todos a la vez, y ves cómo queda el plato.</p>
+      <ul>
+        <li><b>Tiradas individuales o totales.</b> Cambiás solo la proteína, o barajás el día entero.</li>
+        <li><b>Descripción del plato.</b> Te arma la idea de la comida, no solo una lista de ingredientes.</li>
+        <li><b>Afinidad nutricional 💡.</b> Te sugiere combos que se potencian (por ejemplo, hierro + vitamina C).</li>
+      </ul>
+    </div>
+
+    <div class="tool" style="--col:var(--prot)">
+      <span class="tool-tag">✏️ Editar base</span>
+      <h3>La despensa que manda en todo</h3>
+      <p>La lista única de alimentos que usan el planificador y la matriz. Acá la hacés tuya.</p>
+      <ul>
+        <li><b>Activar / desactivar (✓ / ○).</b> Dejá prendidos solo los que tenés. Hay botones para <b>seleccionar</b> o <b>deseleccionar todo</b> de una.</li>
+        <li><b>Sumar tus alimentos.</b> Cargás nombre, macros (P/C/G) y micros por 100 g; las calorías se calculan solas.</li>
+        <li><b>Etiquetas.</b> 🐟 omega-3 · ◆ magnesio · K potasio, para reconocerlos de un vistazo.</li>
+        <li><b>Uso y estructura.</b> Marcás en qué comidas puede aparecer cada alimento y qué papel cumple en el plato (ver abajo).</li>
+        <li><b>Exportar / Importar base.</b> Respaldás todos tus cambios en un archivo.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- CONCEPTOS -->
+<section id="conceptos">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Conceptos clave</div>
+      <h2>Cuatro ideas que hacen que los menús tengan sentido</h2>
+      <p>No necesitás dominarlas para empezar, pero entenderlas te da control fino sobre lo que arma la app.</p>
+    </div>
+    <div class="concepts">
+      <div class="concept">
+        <h3><span class="dot" style="background:var(--prot)"></span>Estructura del plato</h3>
+        <p>Cada plato se arma con un orden lógico, no al voleo:</p>
+        <div class="roles">
+          <span class="role" style="background:var(--prot)">Base · proteína</span>
+          <span class="role" style="background:var(--veg)">Acompañamiento</span>
+          <span class="role" style="background:var(--flav)">Sabor y color</span>
+        </div>
+        <p style="margin-top:10px">La <b>base</b> siempre es una proteína; el <b>acompañamiento</b> da el cuerpo (verdura, carbo, grasa buena); y el <b>sabor y color</b> son condimentos y toppings, a gusto y sin sumar calorías.</p>
+      </div>
+      <div class="concept">
+        <h3><span class="dot" style="background:var(--carbm)"></span>Marca de uso</h3>
+        <p>Cada alimento sabe en qué momento del día tiene sentido: <b>Des</b> (desayuno/merienda), <b>Alm</b> (almuerzo/cena) o <b>Amb</b> (ambos). Así el yogur no te cae en una cena ni el bife en el desayuno.</p>
+      </div>
+      <div class="concept">
+        <h3><span class="dot" style="background:var(--veg)"></span>Marca de estructura</h3>
+        <p>Definís si un alimento es <b>base</b>, <b>acompañamiento</b> o <b>adicional</b>. Por eso la cebolla de verdeo aparece como un toque de sabor y no como el acompañamiento principal de un plato.</p>
+      </div>
+      <div class="concept">
+        <h3><span class="dot" style="background:var(--fatm)"></span>Porciones con sentido</h3>
+        <p>Cada alimento tiene un <b>tope</b> razonable y la app revisa el día para no pasarse: nada de «17 aceitunas» ni «4 huevos fritos» en el mismo plato.</p>
+      </div>
+    </div>
+    <div class="note" style="margin-top:18px">
+      <b>Y un detalle argentino:</b> el desayuno y la merienda incluyen infusiones y lácteos —mate cocido, café, té, leche, café con leche— y se mantienen <b>livianos</b> (hasta ~450 kcal), como corresponde.
+    </div>
+  </div>
+</section>
+
+<!-- INSTALAR -->
+<section id="instalar">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Instalar</div>
+      <h2>Tenela como una app, sin pasar por ninguna tienda</h2>
+      <p>MilPlatos es una PWA: la instalás directo desde el navegador y queda con su ícono, a pantalla completa y funcionando sin conexión.</p>
+    </div>
+    <div class="install">
+      <div class="ibox">
+        <h3>📱 Android (Chrome)</h3>
+        <ol>
+          <li>Abrí <b>jcpietropaolo.github.io/milplatos</b>.</li>
+          <li>Tocá el menú <b>⋮</b> arriba a la derecha.</li>
+          <li>Elegí <b>Instalar app</b> o <b>Agregar a pantalla de inicio</b>.</li>
+        </ol>
+      </div>
+      <div class="ibox">
+        <h3>🍎 iPhone (Safari)</h3>
+        <ol>
+          <li>Abrí el mismo link en <b>Safari</b>.</li>
+          <li>Tocá el botón <b>Compartir</b>.</li>
+          <li>Elegí <b>Agregar a inicio</b>.</li>
+        </ol>
+      </div>
+    </div>
+    <p style="text-align:center;margin-top:22px"><a class="btn btn-primary" href="https://jcpietropaolo.github.io/milplatos/" target="_blank" rel="noopener">Abrir MilPlatos</a></p>
+  </div>
+</section>
+
+<!-- AVISO -->
+<section id="aviso">
+  <div class="wrap">
+    <div class="note">
+      <b>⚠️ Aviso y responsabilidad de uso.</b> Los números (calorías, macros y micronutrientes) son <b>estimaciones</b> para orientarte, no una prescripción. MilPlatos <b>no reemplaza el consejo de un médico, nutricionista ni de ningún profesional de la salud</b>. Consultá con un profesional antes de cambiar tu alimentación, sobre todo si tenés alguna condición de salud, estás embarazada o amamantando, o tomás medicación. Usás la app por tu cuenta y riesgo.
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-cta">
+      <a class="btn btn-primary" href="https://jcpietropaolo.github.io/milplatos/" target="_blank" rel="noopener">Abrir la app</a>
+      <a class="btn btn-coffee" href="https://cafecito.app/milplatos" target="_blank" rel="noopener">☕ Invitame un cafecito</a>
+    </div>
+    <div class="foot-links">
+      <a href="https://jcpietropaolo.github.io/milplatos/" target="_blank" rel="noopener">Abrir app</a>
+      <a href="https://cafecito.app/milplatos" target="_blank" rel="noopener">Apoyar</a>
+      <a href="#top">Volver arriba</a>
+    </div>
+    <p class="foot-fine">MilPlatos · gratis, offline y sin recopilar datos. Hecho con cariño en Argentina.</p>
+  </div>
+</footer>
+
+</body>
+</html>
